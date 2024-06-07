@@ -4,6 +4,7 @@ import { updateDoc, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { useAuth } from '../src/context/AuthContext';
 import { db } from '../src/Config';
 import globalStyles from '../styles/base/globalStyles';
+import { ScrollView } from 'react-native';
 
 const defaultAvatarURL = 'https://firebasestorage.googleapis.com/v0/b/global2tdss-e49ce.appspot.com/o/system%2Fuser.jpg?alt=media&token=3de90bcd-239e-4934-99af-9b012aec3757';
 
@@ -63,66 +64,74 @@ const DetalhesAdminChamado = ({ route, navigation }) => {
     return (
         <View style={globalStyles.stdFullView}>
             <View style={globalStyles.stdViewContent}>
-                <Text style={globalStyles.cardTitle}>{chamado.description}</Text>
-                <Text style={globalStyles.cardDescription}>Coordenada: {chamado.coordinate}</Text>
-                <Text style={globalStyles.cardDescription}>Criado por: {chamado.userEmail}</Text>
-                <Text style={globalStyles.cardDescription}>
-                    {chamado.createdAt && chamado.createdAt.seconds
-                        ? new Date(chamado.createdAt.seconds * 1000).toLocaleDateString()
-                        : 'Data não disponível'}
-                </Text>
-                <Image source={{ uri: chamado.imageURL }} style={globalStyles.modalImage} />
-                <TextInput
-                    style={globalStyles.stdInputText}
-                    placeholder="Adicionar descrição do status"
-                    value={statusDescription}
-                    onChangeText={setStatusDescription}
-                    type="text"
-                    multiline={true}
-                />
-                <View style={globalStyles.linkContainer}>
-                    <Text
-                        onPress={() => handleStatusSelect('resolvido')}
-                        style={[
-                            globalStyles.linkBold,
-                            selectedStatus === 'resolvido' && globalStyles.selectedStatus
-                        ]}
-                    >
-                        Resolvido
-                    </Text>
-                    <Text> | </Text>
-                    <Text
-                        onPress={() => handleStatusSelect('invalido')}
-                        style={[
-                            globalStyles.linkBold,
-                            selectedStatus === 'invalido' && globalStyles.selectedStatus
-                        ]}
-                    >
-                        Inválido
-                    </Text>
-                    <Text> | </Text>
-                    <Text
-                        onPress={() => handleStatusSelect('em_andamento')}
-                        style={[
-                            globalStyles.linkBold,
-                            selectedStatus === 'em_andamento' && globalStyles.selectedStatus
-                        ]}
-                    >
-                        Em Andamento
-                    </Text>
-                </View>
-                <TouchableOpacity
-                    style={globalStyles.stdButton}
-                    onPress={handleUpdateStatus}
+
+                <ScrollView
+                    style={globalStyles.scrollViewContainer}
+                    contentContainerStyle={globalStyles.scrollViewContainerCenter}
                 >
-                    <Text style={globalStyles.stdButtonText}>Confirmar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={{ ...globalStyles.stdButton, backgroundColor: '#ff3b30', borderColor: '#ff3b30', marginTop: 10 }}
-                    onPress={handleDelete}
-                >
-                    <Text style={{ ...globalStyles.stdButtonText, color: '#fff' }}>Excluir Chamado</Text>
-                </TouchableOpacity>
+
+                    <Text style={globalStyles.cardTitle}>{chamado.description}</Text>
+                    <Text style={globalStyles.cardDescription}>Coordenada: {chamado.coordinate}</Text>
+                    <Text style={globalStyles.cardDescription}>Criado por: {chamado.userEmail}</Text>
+                    <Text style={globalStyles.cardDescription}>
+                        {chamado.createdAt && chamado.createdAt.seconds
+                            ? new Date(chamado.createdAt.seconds * 1000).toLocaleDateString()
+                            : 'Data não disponível'}
+                    </Text>
+                    <Image source={{ uri: chamado.imageURL }} style={globalStyles.modalImage} />
+                    <TextInput
+                        style={globalStyles.stdInputText}
+                        placeholder="Adicionar descrição do status"
+                        value={statusDescription}
+                        onChangeText={setStatusDescription}
+                        type="text"
+                        multiline={true}
+                    />
+                    <View style={globalStyles.linkContainer}>
+                        <Text
+                            onPress={() => handleStatusSelect('resolvido')}
+                            style={[
+                                globalStyles.linkBold,
+                                selectedStatus === 'resolvido' && globalStyles.selectedStatus
+                            ]}
+                        >
+                            Resolvido
+                        </Text>
+                        <Text> | </Text>
+                        <Text
+                            onPress={() => handleStatusSelect('invalido')}
+                            style={[
+                                globalStyles.linkBold,
+                                selectedStatus === 'invalido' && globalStyles.selectedStatus
+                            ]}
+                        >
+                            Inválido
+                        </Text>
+                        <Text> | </Text>
+                        <Text
+                            onPress={() => handleStatusSelect('em_andamento')}
+                            style={[
+                                globalStyles.linkBold,
+                                selectedStatus === 'em_andamento' && globalStyles.selectedStatus
+                            ]}
+                        >
+                            Em Andamento
+                        </Text>
+                    </View>
+                    <TouchableOpacity
+                        style={globalStyles.stdButton}
+                        onPress={handleUpdateStatus}
+                    >
+                        <Text style={globalStyles.stdButtonText}>Confirmar</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={{ ...globalStyles.stdButton, backgroundColor: '#ff3b30', borderColor: '#ff3b30', marginTop: 10 }}
+                        onPress={handleDelete}
+                    >
+                        <Text style={{ ...globalStyles.stdButtonText, color: '#fff' }}>Excluir Chamado</Text>
+                    </TouchableOpacity>
+                </ScrollView>
+
             </View>
         </View>
     );
