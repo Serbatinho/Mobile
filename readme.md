@@ -1,6 +1,6 @@
 ###############################################
 
-# Projeto de Monitoramento de Poluição Ambiental
+# Projeto de Monitoramento de Poluição Ambiental com IA
 
 ###############################################
 
