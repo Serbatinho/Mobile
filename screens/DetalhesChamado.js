@@ -9,8 +9,8 @@ const DetalhesChamado = ({ route, navigation }) => {
 
     return (
         <View style={globalStyles.stdFullView}>
-            <ScrollView style={globalStyles.scrollViewContainer}>
-                <View style={globalStyles.stdViewContent}>
+            <View style={globalStyles.stdViewContent}>
+                <ScrollView style={globalStyles.scrollViewContainer}>
                     <Text style={globalStyles.cardTitle}>{chamado.description}</Text>
                     <Text style={globalStyles.cardDescription}>{chamado.coordinate}</Text>
                     <Text style={globalStyles.cardDescription}>
@@ -40,8 +40,8 @@ const DetalhesChamado = ({ route, navigation }) => {
                     >
                         <Text style={globalStyles.stdButtonText}>Voltar</Text>
                     </TouchableOpacity>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </View>
         </View>
     );
 };

@@ -53,7 +53,7 @@ const Home = ({ navigation }) => {
                             {user ? `Bem-vindo, ${username}!` : 'Olá!'}
                         </Text>
                         <Text style={globalStyles.cardDescription}>
-                            Este aplicativo permite que usuários comuniquem a localização de poluição ambiental (focado em praias) e direcionem os relatórios diretamente para ONGs.
+                            Este aplicativo permite que usuários comuniquem a localização de poluição ambiental por meio de fotos, que passará por uma AI de detecção de residuos e direcionem os relatórios diretamente para ONGs.
                         </Text>
                         <TouchableOpacity
                             style={globalStyles.stdButton}

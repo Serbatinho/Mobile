@@ -12,6 +12,7 @@ const AbrirChamado = ({ navigation }) => {
     const { user } = useAuth();
     const [description, setDescription] = useState('');
     const [coordinate, setCoordinate] = useState('');
+    const [image, setImage] = useState(null);
     const [uploading, setUploading] = useState(false);
 
     const pickImage = async () => {
